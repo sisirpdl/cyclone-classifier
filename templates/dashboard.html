@@ -1,0 +1,309 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<style>
+    :root {
+        --font-color: #222;
+        --bg-color: #f2f3f7;
+        --button-bg-color: #f2f3f7;
+        --button-shadow:
+            -6px -6px 8px rgba(255, 255, 255, 0.9),
+            5px 5px 8px rgba(0, 0, 0, 0.07);
+    }
+
+    [data-theme="dark"] {
+        --font-color: #fff;
+        --bg-color: #181818;
+        --button-bg-color: #121212;
+        --button-shadow:
+            -2px -2px 4px rgba(255, 255, 255, 0.05),
+            0 0 10px 10px rgba(255, 255, 255, 0.005),
+            2px 2px 8px rgba(60, 60, 60, 0.1);
+    }
+
+    html {
+        box-sizing: border-box;
+        font-size: 18px;
+        font-family: 'Roboto', sans-serif;
+        color: var(--font-color);
+    }
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+
+    body {
+        
+    background-image: url('/static/images/bg_img.jpg');
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    }
+
+    .color-cool {
+        color: #077dfe;
+    }
+
+    .color-warm {
+        color: #ff7a00;
+    }
+
+    .container {
+        display: flex;
+        justify-content: flex-start;
+        padding-top: 25px;
+        flex-direction: column;
+    }
+
+    @media screen and (min-width:800px) {
+        .container {
+            flex-direction: column;
+        }
+    }
+
+    .app-container {
+        background-color: var(--bg-color);
+        border-radius: 40px;
+        box-shadow: -2px -2px 4px 0px #ffffff, 50px 50px 50px 0px rgba(0, 0, 0, .25);
+        display: block;
+        flex: 1;
+        min-height: 500px;
+        max-width: 350px;
+        margin-bottom: 25px;
+        overflow: hidden;
+        padding: 30px;
+    }
+
+    .app-top-bar {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .app-heading {
+        color: var(--font-color);
+        display: block;
+        flex: 1;
+        font-size: 28px;
+        font-weight: 800;
+        margin: 0;
+        text-align: center;
+    }
+
+    button {
+        border: 0;
+
+        &:focus {
+            border: none;
+            outline: 0 !important;
+            outline-style: none;
+        }
+    }
+
+    .button {
+        color: var(--font-color);
+        position: relative;
+        border-radius: 15px;
+        background: var(--button-bg-color);
+        font-weight: 700;
+        transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: var(--button-shadow);
+        cursor: pointer;
+
+        &.button-link {
+            color: #067CF8;
+            display: block;
+            font-size: 17px;
+            margin: 30px 0 0;
+            padding: 20px 0;
+            width: 100%;
+        }
+
+        &.button-small {
+            color: #6D6E74;
+            font-size: 22px;
+            line-height: 40px;
+            width: 40px;
+            height: 40px;
+        }
+
+        &.button-large {
+            display: flex;
+            font-size: 20px;
+            flex-direction: column;
+
+            text-align: left;
+            width: 45%;
+
+            & svg {
+                margin-bottom: 40px;
+                width: 30px;
+            }
+        }
+    }
+
+    .button-dial {
+        border-radius: 50%;
+        display: flex;
+        height: 170px;
+        margin: 35px auto;
+        align-items: center;
+        justify-content: center;
+        width: 170px;
+    }
+
+    .button-dial-top {
+        background: var(--button-bg-color);
+        box-shadow: var(--button-shadow);
+        border-radius: 50%;
+        width: 70%;
+        height: 70%;
+        margin: 0 auto;
+        position: absolute;
+        top: 15%;
+        left: 15%;
+        text-align: center;
+        z-index: 5;
+    }
+
+    .button-dial-label {
+        color: #067CF8;
+        font-size: 16px;
+        fill: #067CF8;
+        position: relative;
+        z-index: 10;
+    }
+
+    .button-dial-spoke {
+        background-color: rgba(96, 171, 254, 0.6);
+        display: block;
+        height: 2px;
+        width: 83%;
+        position: absolute;
+        margin: 0 auto;
+        z-index: 5;
+        top: 50%;
+
+        &:nth-child(2) {
+            transform: rotate(30deg);
+        }
+
+        &:nth-child(3) {
+            transform: rotate(60deg);
+        }
+
+        &:nth-child(4) {
+            transform: rotate(90deg);
+        }
+
+        &:nth-child(5) {
+            transform: rotate(120deg);
+        }
+
+        &:nth-child(6) {
+            transform: rotate(150deg);
+        }
+    }
+
+    .button-block {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 24px;
+        width: 100%;
+
+        span {
+            font-size: 16px;
+        }
+    }
+
+    .subtle {
+        color: #6D6E74;
+    }
+
+    .flex-button-container {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+{% endblock %}
+
+
+
+{% block content %}
+<div class="container-fluid d-flex justify-content-center" style="margin-top: 2%; margin-bottom: 0%;">
+    <div class="container" style="width:400px;margin-left: 10px">
+        <div class="app-container">
+            <div class="app-top-bar">
+                <h1 class="app-heading">{{ city }}, {{country}}</h1>
+            </div>
+            <div class="app-content">
+                <button class="button button-block">
+                    <span class="subtle">windSpeed</span> <span>{{weather.wind.speed}} m/s</span>
+                </button>
+                <button class="button button-block">
+                    <span class="subtle">windDirection</span> <span>{{weather.wind.deg}} &deg</span>
+                </button>
+                <button class="button button-block">
+                    <span class="subtle">Pressure</span> <span>{{weather.main.pressure}} hPa</span>
+                </button>
+                <button class="button button-block">
+                    <span class="subtle">Clouds</span> <span>{{weather.clouds.all}}%</span>
+                </button>
+                <br>
+                <div class="flex-button-container">
+                    <button class="button button-large px-3 py-2">
+                        <img id="okie" class = "my-2" src="http://openweathermap.org/img/wn/{{weather.weather[0].icon}}@2x.png" alt="">
+                        <br>
+                        <div class="text-center">{{weather.weather[0].description}}</div>
+                    </button>
+                    <button class="button button-large px-4">
+                        <img class = "my-2" src="{{ url_for('static', filename = 'images/humidity.jpg') }}" alt="">
+                        <br>
+                        <div class="text-center">{{weather.main.humidity}}%</div>
+                    </button>
+                </div>
+                <div class="button button-dial">
+                    
+
+                    <div class="button-dial-top"></div>
+                    <div class="button-dial-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                            x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve">
+                            <g>
+                                <path
+                                    d="M60.333,68.349V11.111C60.333,4.984,55.349,0,49.222,0c-6.126,0-11.111,4.984-11.111,11.111v57.237   c-4.15,3.323-6.667,8.397-6.667,13.874c0,9.802,7.975,17.777,17.777,17.777C59.024,100,67,92.024,67,82.223   C67,76.746,64.482,71.672,60.333,68.349z M44.778,48.363h4.444v-4.444h-4.444V35.03h4.444v-4.444h-4.444v-8.889h4.444v-4.444   h-4.444v-6.142c0-2.455,1.99-4.444,4.444-4.444c2.455,0,4.445,1.989,4.445,4.444v41.111h-8.889V48.363z" />
+                            </g>
+                        </svg>
+                        {{ (weather.main.temp - 273) | round }}&deg;C
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="container my-1 mx-3" style="border-radius: 50px; background: #f2f3f7; box-shadow: inset 20px 20px 60px #dbe2ff, inset -20px -20px 60px #ffffff;">
+                    
+                
+                <div class="px-2">
+                    <blockquote>
+"Hurricanes are tropical storms that form over the North Atlantic Ocean and Northeast Pacific. Cyclones are formed over the South Pacific and Indian Ocean. Typhoons are formed over the Northwest Pacific Ocean."<cite><a href="https://www.bbc.co.uk/newsround/24879162#:~:text=Well%2C%20they%20are%20all%20basically,over%20the%20Northwest%20Pacific%20Ocean."> ~ BBC News</a></cite></blockquote>
+                        
+                    The cyclones/hurricanes/typhoons are irregular wind movements involving closed air circulation around a low pressure centre. This closed air circulation is caused by atmospheric disturbances over and above the earth’s surface, coupled with the earth’s rotation which imparts to these disturbances a whirling motion.<br>
+                    <br>
+                    You can upload an image of cyclone/hurricane/typhoon and predict its speed and ultimately classify it as less/more destructive. The detailed are highlighted more after an image file submission.
+                    <br><br> You can download the images from <a href="https://data.noaa.gov/onestop/">Noaa database</a> or for testing purpose: simply from <a href="https://google.com">Google</a> or you can download some images from this Gdrive link <a href="https://drive.google.com/drive/folders/1-ZJNFz6HqF-MrIcIbIVRm00lCE9KWnD1?usp=sharing">here</a>.
+                    <br>
+                    <br>This website could be upgraded to a new level by automatically uploading satellite images of potential risk areas and setuping a alert code.
+                </div>
+    </div>
+    <div class="my-3 mx-2">
+        <img src="{{ url_for('static', filename = 'images/cyc-types.png') }}" alt="">
+    </div>
+</div>
+
+
+
+{% endblock %}
