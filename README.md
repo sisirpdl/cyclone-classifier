@@ -1,4 +1,4 @@
-# The Knots 🌀
+# Cyclone Classifier
 The cyclones are irregular wind movements involving closed air circulation around a low pressure centre. This closed air circulation is caused by atmospheric disturbances over and above the earth’s surface, coupled with the earth’s ‘rotation which imparts to these disturbances a whirling motion.
 
 ## About the Project
