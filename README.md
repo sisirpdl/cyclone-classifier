@@ -1,24 +1,21 @@
 # Cyclone Classifier
 The cyclones are irregular wind movements involving closed air circulation around a low pressure centre. This closed air circulation is caused by atmospheric disturbances over and above the earth’s surface, coupled with the earth’s ‘rotation which imparts to these disturbances a whirling motion.
+In short, this project is about Image Based Cyclone Speed Prediction by retraining Pretrained Architecture and countermeasure generation based on speed based cyclone categorization.
 
-## About the Project
-* **Tech Used:** HTML, CSS, JS, Bootstrap, PyTorch, TorchVision, Geocoder, OpenWeatherMap API
-
-* **Objective:** Image Based Cyclone Speed Prediction by retraining Pretrained Architecture and countermeasure generation based on speed based cyclone categorization.
+* **Tech Used:** HTML CSS JS, Bootstrap, PyTorch, TorchVision, Geocoder, OpenWeatherMap API
+python version 3.7.9
 
 ## How to run the Project:-
 
-1. **Install python version 3.7.9 on your computer**
-
-2. **Clone the repo.**
+1. **Clone the repo.**
 ```
-git clone https://github.com/The-Knots/The-Knots.git
+git clone https://github.com/sisirpdl/cyclone-classifier
 ```
-3. **Navigate to Repo Directory**
+2. **Navigate to Repo Directory**
 ``` 
-cd The-Knots
+cd cyclone-classifier
 ```
-4. **Download Package Dependancies**
+3. **Download Package Dependancies**
 make sure python3.7.9 is activated.
 ``` 
 pip install -r requirements.txt
